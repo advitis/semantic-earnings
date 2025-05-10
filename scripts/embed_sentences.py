@@ -11,8 +11,12 @@ model = SentenceTransformer(EMBED_MODEL)
 
 def compute_embeddings(texts, cache_path=EMBED_CACHE, use_cache=True):
     if use_cache and os.path.exists(cache_path):
-        with open(cache_path, "rb") as f:
-            return pickle.load(f)
+        cached = pickle.load(open(cache_path, "rb"))
+        if len(cached) == len(texts):
+            print("✅ Using cached embeddings.")
+            return cached
+        else:
+            print("⚠️ Cache size mismatch — regenerating embeddings.")
 
     embeddings = model.encode(texts, show_progress_bar=True)
 

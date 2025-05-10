@@ -45,6 +45,7 @@ def collect_ai_data():
 
 if __name__ == "__main__":
     df = collect_ai_data()
+    df = df[df["text"].str.strip() != ""].copy()
     embeddings = compute_embeddings(df["text"].tolist())
     coords = reduce_embeddings(embeddings)
 
