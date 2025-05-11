@@ -1,13 +1,8 @@
 import nltk
 from nltk.tokenize import sent_tokenize
+from config import AI_KEYWORDS
 
 nltk.download("punkt")
-
-AI_KEYWORDS = [
-    "artificial intelligence", "ai", "machine learning", "ml", "neural network",
-    "deep learning", "large language model", "llm", "gpt", "automation"
-]
-
 
 def extract_ai_sentences(text, keywords=AI_KEYWORDS):
     sentences = sent_tokenize(text)
