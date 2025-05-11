@@ -2,9 +2,7 @@ from sentence_transformers import SentenceTransformer
 import numpy as np
 import os
 import pickle
-
-EMBED_MODEL = "all-MiniLM-L6-v2"
-EMBED_CACHE = "embeddings/ai_embeddings.pkl"
+from scripts.config import EMBED_CACHE, EMBED_MODEL
 
 model = SentenceTransformer(EMBED_MODEL)
 

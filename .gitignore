@@ -8,3 +8,4 @@ data/
 .env
 notebooks/
 *.ipynb_checkpoints
+embeddings/

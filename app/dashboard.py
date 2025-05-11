@@ -1,23 +1,12 @@
+from pathlib import Path
 import streamlit as st
 import pandas as pd
 from scripts.visualize import plot_semantic_map
 from scripts.embed_sentences import compute_embeddings
 from scripts.reduce_and_cluster import reduce_embeddings
 from scripts.extract_ai_sentences import extract_ai_sentences
-from scripts.fetch_transcripts import fetch_transcript
+from scripts.config import COMPANIES, YEARS, TRANSCRIPTS_PATH
 
-COMPANIES = {
-    "apple": "AAPL",
-    "microsoft": "MSFT",
-    "google": "GOOGL",
-    "meta": "META",
-    "amazon": "AMZN",
-    "nvidia": "NVDA",
-    "ibm": "IBM",
-    "oracle": "ORCL"
-}
-YEARS = [2023, 2024]
-QUARTERS = [1, 2, 3, 4]
 
 st.title("🧠 Semantic AI Tracker")
 st.markdown("Analyze how companies talk about AI in earnings calls over time.")
@@ -27,26 +16,30 @@ selected_years = st.slider("Select year range", min_value=min(YEARS), max_value=
 
 if st.button("Run Analysis"):
     rows = []
-    with st.spinner("Fetching and processing transcripts..."):
-        for company in selected_companies:
-            ticker = COMPANIES[company]
-            for year in range(*selected_years):
-                for q in QUARTERS:
-                    text = fetch_transcript(ticker, year, q)
-                    if not text.strip():
-                        continue
-                    mentions = extract_ai_sentences(text)
-                    if not mentions:
-                        continue
-                    joined = " ".join(mentions)
-                    rows.append({
-                        "company": company,
-                        "ticker": ticker,
-                        "year": year,
-                        "quarter": q,
-                        "text": joined,
-                        "mention_count": len(mentions)
-                    })
+    with st.spinner("Loading local transcripts..."):
+        for file in Path(TRANSCRIPTS_PATH).glob("*.txt"):
+            ticker, year, quarter = file.stem.split("_")
+            company = next((k for k, v in COMPANIES.items() if v == ticker), "unknown")
+            if company not in selected_companies:
+                continue
+            year = int(year)
+            if year < selected_years[0] or year > selected_years[1]:
+                continue
+            with open(file, "r", encoding="utf-8") as f:
+                text = f.read()
+            if not text.strip():
+                continue
+            mentions = extract_ai_sentences(text)
+            if not mentions:
+                continue
+            rows.append({
+                "company": company,
+                "ticker": ticker,
+                "year": year,
+                "quarter": int(quarter.replace("Q", "")),
+                "text": " ".join(mentions),
+                "mention_count": len(mentions)
+            })
 
     df = pd.DataFrame(rows)
     if df.empty:
