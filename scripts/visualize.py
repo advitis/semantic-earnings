@@ -19,7 +19,7 @@ def plot_semantic_map(df):
         color="company",
         size="mention_size",
         hover_name="label",
-        hover_data={"text": False, "mention_count": True, "x": False, "y": False},
+        hover_data={"text": True, "mention_count": True, "x": False, "y": False},
         title="Semantic Map of AI Discussion Across Earnings Calls"
     )
     fig.update_layout(legend_title_text='Company', height=700)

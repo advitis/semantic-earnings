@@ -1,6 +1,6 @@
 import nltk
 from nltk.tokenize import sent_tokenize
-from config import AI_KEYWORDS
+from scripts.config import AI_KEYWORDS
 
 nltk.download("punkt")
 
