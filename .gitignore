@@ -3,9 +3,7 @@ v0/
 data/
 __pycache__/
 *.pyc
-*.pkl
 data/
 .env
 notebooks/
 *.ipynb_checkpoints
-embeddings/
