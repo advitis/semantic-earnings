@@ -7,3 +7,5 @@ data/
 .env
 notebooks/
 *.ipynb_checkpoints
+*.html
+.DS_Store

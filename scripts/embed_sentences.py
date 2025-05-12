@@ -1,5 +1,4 @@
 from sentence_transformers import SentenceTransformer
-import numpy as np
 import os
 import pickle
 from scripts.config import EMBED_CACHE, EMBED_MODEL
