@@ -19,7 +19,7 @@ def plot_semantic_map(df):
         y="y",
         color="company",
         size="point_size",
-        text="label",
+        # text="label", # show to label each dot
         hover_data={
             "label": False,
             "cluster_name": True,
@@ -46,5 +46,10 @@ def plot_semantic_map(df):
             font_size=10,
             bgcolor="rgba(255,255,255,0.7)"
         )
-    fig.update_layout(legend_title_text='Company', height=700)
+    fig.update_layout(
+        legend_title_text='Company',
+        height=700,
+        xaxis_title="←  Consumer & Logistics (Who they sell AI to)   —   Enterprise Infrastructure  →",
+        yaxis_title="←  Front‑End Product Features   —   Back‑End Operational Capabilities  →"
+    )
     fig.show()
