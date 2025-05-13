@@ -3,6 +3,13 @@ from sklearn.preprocessing import MinMaxScaler
 
 
 def add_plot_columns(df):
+    """
+    Adds columns to the dataframe for plotting: 'label', 'point_size', and 'year_q'.
+    - 'label': formatted string for company, year, and quarter.
+    - 'point_size': scaled value based on sentence count.
+    - 'year_q': string combining year and quarter.
+    Returns the modified dataframe.
+    """
     df["label"] = df.apply(lambda r: f"{r['company'].title()} {r['year']} Q{r['quarter']}", axis=1)
     scaler = MinMaxScaler((10, 60))
     df["point_size"] = scaler.fit_transform(df[["sentence_count"]])
@@ -11,6 +18,10 @@ def add_plot_columns(df):
 
 
 def plot_semantic_map(df):
+    """
+    Plots a 2D semantic map of earnings calls using Plotly, with points colored by company and sized by sentence count.
+    Adds cluster name annotations and customizes axes and legend.
+    """
     df = add_plot_columns(df)
 
     fig = px.scatter(
@@ -19,7 +30,7 @@ def plot_semantic_map(df):
         y="y",
         color="company",
         size="point_size",
-        # text="label", # show to label each dot
+        # text="label", # show to label each dot with company, year, quarter
         hover_data={
             "label": False,
             "cluster_name": True,

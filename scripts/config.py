@@ -14,6 +14,20 @@ AI_KEYWORDS = [
     "deep learning", "large language model", "llm", "gpt", "automation"
 ]
 
+BOILERPLATE_PHRASES = (
+        "forward-looking", "safe harbor", "good morning", "good afternoon",
+        "welcome", "thank you", "operator"
+    )
+
+BAD_TOKENS = {
+        "risk", "risks", "uncertainties", "forward", "looking", "statement", "statements",
+        "safe", "harbor", "thank", "thanks", "welcome", "operator",
+        "quarter", "quarters", "year", "years", "think", "said", "business", "question", "subject", "remain", "currency",
+        "growth", "focused", "actual", "results", "differ", "cash", "revenue", "expect", "nvidia", "income",
+        "learning", "computing", "seamless", "seamlessly", "just", "going", "continue", "meta", "world", "really",
+        "driven", "people", "time", "margin", "new", "term"
+    }
+
 YEARS = range(2019, 2025)
 QUARTERS = [1, 2, 3, 4]
 

@@ -2,6 +2,7 @@ from sklearn.cluster import KMeans
 from sklearn.feature_extraction.text import TfidfVectorizer
 from umap import UMAP
 import re
+from scripts.config import BAD_TOKENS
 
 
 def reduce_embeddings(embeddings, n_neighbors=5, min_dist=0.3, metric="cosine", random_state=42):
@@ -16,15 +17,8 @@ def cluster_embeddings(embeddings, k=10, random_state=0):
 
 def _clean_term(term: str) -> bool:
     """Return True if the candidate term is meaningful (no digits, not stop‑ filler)."""
-    bad_tokens = {
-        "risk", "risks", "uncertainties", "forward", "looking", "statement", "statements",
-        "safe", "harbor", "thank", "thanks", "welcome", "operator",
-        "quarter", "quarters", "year", "years", "think", "said", "business", "question", "subject", "remain", "currency",
-        "growth", "focused", "actual", "results", "differ", "cash", "revenue", "expect", "nvidia", "income",
-        "learning", "computing", "seamless", "seamlessly", "just", "going", "continue", "meta", "world", "really",
-        "driven", "people", "time", "margin", "new", "term"
-    }
-    if any(tok in bad_tokens for tok in term.split()):
+
+    if any(tok in BAD_TOKENS for tok in term.split()):
         return False
     if re.search(r"\d", term):
         return False

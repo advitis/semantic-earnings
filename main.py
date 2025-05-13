@@ -8,6 +8,10 @@ from scripts.visualize import plot_semantic_map
 from scripts.config import COMPANIES, TRANSCRIPTS_PATH
 
 def collect_ai_sentences():
+    """
+    Collects all sentences from transcript files that are substantive and contain AI keywords.
+    Returns a DataFrame with columns: company, call_id, year, quarter, sentence.
+    """
     rows = []
     for file in Path(TRANSCRIPTS_PATH).glob("*.txt"):
         ticker, year, quarter = file.stem.split("_")
