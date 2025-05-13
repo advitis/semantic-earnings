@@ -71,3 +71,10 @@ if __name__ == "__main__":
 
     # Visual
     plot_semantic_map(call_df)
+
+    # Save call-level dataframe for the Streamlit dashboard
+    import os
+    os.makedirs("processed", exist_ok=True)
+    cache_path = "processed/call_df.pkl"
+    call_df.to_pickle(cache_path)
+    print(f"💾 Saved call-level coordinates to {cache_path}")
