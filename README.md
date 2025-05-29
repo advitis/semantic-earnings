@@ -1,5 +1,7 @@
 # How Big Tech is Talking About AI: Earnings Call Clustering (2019–2025)
 
+Head over to my [Medium](https://medium.com/@advitis/how-big-tech-is-talking-about-ai-what-earnings-calls-reveal-2019-2025-33ec4b08b289) for a narrative deep-dive of this analysis.
+
 This project analyzes 200+ quarterly earnings calls from major tech companies to uncover how they talk about **Artificial Intelligence** - not through analyst summaries, but using **Natural Language Processing (NLP)** to map their AI narratives directly.
 
 Each dot in the final chart represents an earnings call. Similar calls cluster together based on what was actually said - revealing strategic pivots, converging agendas, and the emergence of generative AI.
@@ -35,7 +37,7 @@ Turn six years of text-heavy earnings transcripts into a **semantic map** of AI 
 
 ---
 
-## 🗺️ Strategic Insight (Brief)
+## 🗺️ Strategic Insight (See Medium article for more detail)
 
 While this repo focuses on implementation, the visual output reveals major trends:
 
