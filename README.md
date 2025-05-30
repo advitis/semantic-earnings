@@ -1,6 +1,6 @@
 # How Big Tech is Talking About AI: Earnings Call Clustering (2019–2025)
 
-Head over to my [Medium](https://medium.com/@advitis/how-big-tech-is-talking-about-ai-what-earnings-calls-reveal-2019-2025-33ec4b08b289) for a narrative deep-dive of this analysis.
+Please refer to my [Medium](https://medium.com/@advitis/how-big-tech-is-talking-about-ai-what-earnings-calls-reveal-2019-2025-33ec4b08b289) article for a narrative deep-dive of this analysis.
 
 This project analyzes 200+ quarterly earnings calls from major tech companies to uncover how they talk about **Artificial Intelligence** - not through analyst summaries, but using **Natural Language Processing (NLP)** to map their AI narratives directly.
 
@@ -41,8 +41,8 @@ Turn six years of text-heavy earnings transcripts into a **semantic map** of AI 
 
 While this repo focuses on implementation, the visual output reveals major trends:
 
-- **Meta** maintains a long-running AI narrative around ad optimization, later branching into generative assistants.
-- **Amazon** and **IBM** begin sounding alike in 2023–24 as they push enterprise-grade Gen-AI platforms (Bedrock, Watsonx).
-- **Apple** pivots mid-way: from on-device personalization to announcing its “Private Compute Cloud,” returning to an infrastructure narrative.
+- **Meta** sustains a long-term focus on ad optimization, with a parallel shift from 2023 onward toward generative AI initiatives such as virtual assistants.
+- **Amazon** and **IBM** increasingly converge in narrative by 2023–24, emphasizing enterprise-grade generative AI platforms (e.g., Bedrock, Watsonx).
+- **Apple** evolves from emphasizing on-device personalization to reintroducing infrastructure themes, notably through its “Private Compute Cloud” strategy.
 
 ---
